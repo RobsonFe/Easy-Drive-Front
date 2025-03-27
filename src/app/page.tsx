@@ -33,7 +33,7 @@ export default function Home() {
   ];
 
   return (
-    <Layout title="EasyDrive">
+    <Layout title="Easy Drive">
       <div className="space-y-8">
         {/* Hero Section */}
         <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-xl p-8 text-center">

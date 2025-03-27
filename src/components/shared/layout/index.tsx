@@ -1,31 +1,73 @@
 "use client"
-
 import Footer from "../footer"
+import { cn } from "@/lib/utils"
+import { motion, AnimatePresence } from "framer-motion"
+import { usePathname } from "next/navigation"
 
 interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode
   title?: string
+  className?: string
+  description?: string
 }
 
-const Layout: React.FC<LayoutProps> = (props: LayoutProps) => {
+const Layout: React.FC<LayoutProps> = ({ 
+  children, 
+  title, 
+  description,
+  className, 
+  ...props 
+}) => {
+  const pathname = usePathname()
+
   return (
-    <div className="flex flex-col min-h-screen">
-      <div className="relative flex py-20 flex-1 flex-col overflow-hidden">
-        <div className="items-center flex justify-center gap-4 sm:p-6 lg:p-8 flex-wrap">
-          {props.title && (
-            <h1 className="flex 2xsm:text-[30px] md:text-[35px] font-semibold">
-              {props.title}
-            </h1>
+      <div 
+        className={cn(
+          "min-h-screen flex flex-col bg-background text-foreground antialiased",
+          className
+        )} 
+        {...props}
+      >
+        
+        <div className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          {title && (
+            <motion.div 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mb-8 text-center"
+            >
+              <h1 
+                className="text-4xl font-extrabold tracking-tight 
+                  lg:text-5xl bg-gradient-to-r from-primary to-secondary 
+                   bg-clip-text"
+              >
+                {title}
+              </h1>
+              {description && (
+                <p className="mt-4 text-xl text-muted-foreground max-w-2xl mx-auto">
+                  {description}
+                </p>
+              )}
+            </motion.div>
           )}
+          
+          <AnimatePresence mode="wait">
+            <motion.main 
+              key={pathname}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-6"
+            >
+              {children}
+            </motion.main>
+          </AnimatePresence>
         </div>
-        <main className="w-full flex-1 overflow-y-auto">
-          <div className="mx-auto max-w-screen-2xl p-4 md:px-2 md:py-6 xl:p-6 2xl:p-10">
-            {props.children}
-          </div>
-        </main>
+        
+        <Footer />
       </div>
-      <Footer />
-    </div>
   )
 }
 
