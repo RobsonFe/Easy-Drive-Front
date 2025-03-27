@@ -55,7 +55,7 @@ export default function Home() {
               <CardHeader>
                 <div className="flex items-center gap-4">
                   <feature.icon 
-                    className={`w-10 h-10 ${feature.color} group-hover:scale-110 transition-transform`} 
+                    className={`w-10 h-10 ${feature.color} group-hover:scale-110 transition-transform cursor-pointer`} 
                   />
                   <CardTitle>{feature.title}</CardTitle>
                 </div>
