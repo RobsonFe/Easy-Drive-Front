@@ -41,7 +41,7 @@ export default function Home() {
             Liberdade e Mobilidade sob Demanda
           </h2>
           <p className="text-muted-foreground max-w-3xl mx-auto">
-            EasyDrive: Seu parceiro de mobilidade, oferecendo uma experiência de aluguel de veículos simples, segura e conveniente para cada jornada.
+            Easy Drive: Seu parceiro de mobilidade, oferecendo uma experiência de aluguel de veículos simples, segura e conveniente para cada jornada.
           </p>
         </div>
 
@@ -107,7 +107,7 @@ export default function Home() {
             </div>
 
             <div className="text-center mt-6">
-              <Badge variant="outline" className="text-sm">
+              <Badge variant="outline" className="text-sm cursor-pointer">
                 Junte-se a milhares de clientes satisfeitos!
               </Badge>
             </div>
