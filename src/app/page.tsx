@@ -1,103 +1,119 @@
-import Image from "next/image";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Car, Shield, SmartphoneIcon, LeafIcon, UsersIcon } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import Layout from "@/components/shared/layout";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const features = [
+    {
+      icon: Car,
+      title: "Ampla Variedade de Veículos",
+      description: "Escolha entre uma extensa frota de carros e motos, todos bem mantidos e prontos para uso.",
+      color: "text-blue-500"
+    },
+    {
+      icon: Shield,
+      title: "Segurança em Primeiro Lugar",
+      description: "Todos os veículos passam por rigorosas inspeções de segurança antes de serem disponibilizados.",
+      color: "text-green-500"
+    },
+    {
+      icon: SmartphoneIcon,
+      title: "Conveniência Digital",
+      description: "Gerencie suas reservas facilmente através do nosso aplicativo móvel, a qualquer hora e em qualquer lugar.",
+      color: "text-purple-500"
+    },
+    {
+      icon: LeafIcon,
+      title: "Compromisso Sustentável",
+      description: "Oferecemos veículos elétricos e híbridos para uma escolha mais ecológica e responsável.",
+      color: "text-emerald-500"
+    }
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <Layout title="EasyDrive">
+      <div className="space-y-8">
+        {/* Hero Section */}
+        <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-xl p-8 text-center">
+          <h2 className="text-3xl font-bold mb-4 text-foreground">
+            Liberdade e Mobilidade sob Demanda
+          </h2>
+          <p className="text-muted-foreground max-w-3xl mx-auto">
+            EasyDrive: Seu parceiro de mobilidade, oferecendo uma experiência de aluguel de veículos simples, segura e conveniente para cada jornada.
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        {/* Features Grid */}
+        <div className="grid md:grid-cols-2 gap-6">
+          {features.map((feature, index) => (
+            <Card 
+              key={index} 
+              className="hover:shadow-lg transition-shadow duration-300 group"
+            >
+              <CardHeader>
+                <div className="flex items-center gap-4">
+                  <feature.icon 
+                    className={`w-10 h-10 ${feature.color} group-hover:scale-110 transition-transform`} 
+                  />
+                  <CardTitle>{feature.title}</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">{feature.description}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Detailed Description */}
+        <Card>
+          <CardContent className="p-8 space-y-4">
+            <p className="text-muted-foreground leading-relaxed">
+              Na EasyDrive, nossa missão vai além do simples aluguel de veículos. Estamos comprometidos em oferecer uma experiência de mobilidade que seja:
+            </p>
+            
+            <div className="grid md:grid-cols-3 gap-4">
+              <div className="bg-secondary/10 p-4 rounded-lg">
+                <h3 className="font-semibold mb-2 flex items-center gap-2">
+                  <UsersIcon className="w-5 h-5 text-primary" />
+                  Centrada no Cliente
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  Sua satisfação é nossa prioridade. Processos simples, suporte dedicado.
+                </p>
+              </div>
+              
+              <div className="bg-secondary/10 p-4 rounded-lg">
+                <h3 className="font-semibold mb-2 flex items-center gap-2">
+                  <Shield className="w-5 h-5 text-green-500" />
+                  Totalmente Segura
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  Inspeções rigorosas e manutenção preventiva em todos os veículos.
+                </p>
+              </div>
+              
+              <div className="bg-secondary/10 p-4 rounded-lg">
+                <h3 className="font-semibold mb-2 flex items-center gap-2">
+                  <LeafIcon className="w-5 h-5 text-emerald-500" />
+                  Sustentável
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  Contribua para um futuro mais verde com nossa frota de veículos ecológicos.
+                </p>
+              </div>
+            </div>
+
+            <div className="text-center mt-6">
+              <Badge variant="outline" className="text-sm">
+                Junte-se a milhares de clientes satisfeitos!
+              </Badge>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </Layout>
   );
 }
