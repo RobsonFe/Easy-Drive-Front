@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import toast from "react-hot-toast";
 
 type VehicleMessage = {
-	vehicle_id: number;
 	vehicle_brand: string;
 	vehicle_model: string;
 	vehicle_year: number;
